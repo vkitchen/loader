@@ -65,7 +65,7 @@ var require, define;
     
     var i = state.defQueue.length;
     while (i--) {
-      var name = state.defQueue[i][0];
+      name = state.defQueue[i][0];
       var deps = state.defQueue[i][1];
       var callback = state.defQueue[i][2];
       
@@ -77,12 +77,8 @@ var require, define;
       if (isReady) {
         fns = {};
         
-        if (callback.length < 2) {
-          state.loaded[name] = true;
-          callback(require);
-        } else {
-          callback(require, exports);
-        }
+        state.loaded[name] = true;
+        callback(require, exports);
         
         state.defQueue.splice(i, 1);
       }
